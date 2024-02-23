@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sportsapp-dev-125704-authRole",
+      "UnauthRoleArn": "arn:aws:iam::637423469948:role/amplify-sportsapp-dev-125704-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::637423469948:role/amplify-sportsapp-dev-125704-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-sportsapp-dev-125704-deployment",
+      "UnauthRoleName": "amplify-sportsapp-dev-125704-unauthRole",
+      "StackName": "amplify-sportsapp-dev-125704",
+      "StackId": "arn:aws:cloudformation:us-east-2:637423469948:stack/amplify-sportsapp-dev-125704/f4da98b0-d274-11ee-a2d4-02741dab44e9",
+      "AmplifyAppId": "d2zsdmiliykhju"
+    },
+    "categories": {
+      "function": {
+        "sportsapp2410fef6": {
+          "deploymentBucketName": "amplify-sportsapp-dev-125704-deployment",
+          "s3Key": "amplify-builds/sportsapp2410fef6-67563646357530434a68-build.zip"
+        }
+      },
+      "api": {
+        "sportsappBackend": {}
+      }
+    }
+  }
+}

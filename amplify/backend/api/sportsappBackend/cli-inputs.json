@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/stats": {
+      "name": "/stats",
+      "lambdaFunction": "sportsapp2410fef6",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
