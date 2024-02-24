@@ -5,6 +5,18 @@
       "name": "sportsappBackend",
       "endpoint": "https://e3oq1j7ufg.execute-api.us-east-2.amazonaws.com/dev",
       "region": "us-east-2"
+    },
+    {
+      "name": "islandersdb",
+      "endpoint": "https://6r7hy9ope9.execute-api.us-east-2.amazonaws.com/dev",
+      "region": "us-east-2"
+    }
+  ],
+  "aws_dynamodb_all_tables_region": "us-east-2",
+  "aws_dynamodb_table_schemas": [
+    {
+      "tableName": "funfacts-dev",
+      "region": "us-east-2"
     }
   ]
 }

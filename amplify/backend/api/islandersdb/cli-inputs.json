@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/funfacts": {
+      "name": "/funfacts",
+      "lambdaFunction": "sportsapp515e7511",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

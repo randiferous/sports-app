@@ -1,5 +1,19 @@
 {
   "api": {
+    "islandersdb": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "sportsapp515e7511"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "sportsappBackend": {
       "dependsOn": [
         {
@@ -20,6 +34,25 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "sportsapp515e7511": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "storage",
+          "resourceName": "islandersdb"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -38,6 +71,28 @@
           "resourceName": "sportsapp2410fef6"
         }
       ]
+    },
+    "AMPLIFY_function_sportsapp515e7511_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sportsapp515e7511"
+        }
+      ]
+    },
+    "AMPLIFY_function_sportsapp515e7511_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sportsapp515e7511"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "islandersdb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     }
   }
 }

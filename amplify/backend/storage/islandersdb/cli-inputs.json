@@ -1,0 +1,14 @@
+{
+  "resourceName": "islandersdb",
+  "tableName": "funfacts",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "number"
+  },
+  "sortKey": {
+    "fieldName": "fact",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
