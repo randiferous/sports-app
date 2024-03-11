@@ -3,50 +3,28 @@ import React, { useState, useEffect } from 'react';
 const HomePage = () => {
   const [teamData, setTeamData] = useState({ forwards: [], defensemen: [], goalies: [] });
   const [funFacts, setFunFacts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchTeamData = async () => {
+    // Combine both fetch operations into a single async function to manage loading state more effectively
+    const fetchData = async () => {
+      setIsLoading(true); // Start loading
       try {
-        const response = await fetch('https://e3oq1j7ufg.execute-api.us-east-2.amazonaws.com/dev/stats');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setTeamData(data.data);
+        const teamResponse = await fetch('https://e3oq1j7ufg.execute-api.us-east-2.amazonaws.com/dev/stats');
+        const teamData = await teamResponse.json();
+        setTeamData(teamData.data);
+
+        const factsResponse = await fetch('https://6r7hy9ope9.execute-api.us-east-2.amazonaws.com/dev/funfacts');
+        const funFactsData = await factsResponse.json();
+        setFunFacts(funFactsData);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false); // Stop loading regardless of success or failure
       }
     };
 
-    const fetchFunFacts = async () => {
-      try {
-        const response = await fetch(' https://6r7hy9ope9.execute-api.us-east-2.amazonaws.com/dev/funfacts');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setFunFacts(data);
-      } catch (error) {
-        console.error('Error fetching fun facts:', error);
-      }
-    };
-
-    const fetchTeamStats = async () => {
-      try {
-        const response = await fetch('https://e3oq1j7ufg.execute-api.us-east-2.amazonaws.com/dev/stats/team');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log('Team Stats:', data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchTeamData();
-    fetchFunFacts();
-    fetchTeamStats();
+    fetchData();
   }, []);
 
   const formatHeight = (heightInInches) => {
@@ -87,33 +65,46 @@ const HomePage = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>New York Islanders (my favorite sports team)</h2>
-        {['Forwards', 'Defensemen', 'Goalies'].map((position) => (
-          <section key={position}>
-            <h3>{position}</h3>
-            <table>
-              <thead>
-                <tr>
-                <th></th> 
-                  <th>Name</th>
-                  <th>Number</th>
-                  <th>Position</th>
-                  <th>Age</th>
-                  <th>Birthplace</th>
-                  <th>Height</th>
-                  <th>Weight (lbs)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {teamData[position.toLowerCase()].map(renderPlayer)}
-              </tbody>
-            </table>
-          </section>
-        ))}
-        <h2>Fun Facts</h2>
-        <ul>
-          {funFacts.map(renderFact)}
-        </ul>
+        <h2>New York Islanders</h2>
+        {isLoading ? (
+          <div className="loader-container">
+            <div className="loader"></div>
+          </div>
+        ) : (
+          <div className="content-container">
+            <div className="roster-info">
+              {['Forwards', 'Defensemen', 'Goalies'].map((position) => (
+                <section key={position}>
+                  <h3>{position}</h3>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Number</th>
+                        <th>Position</th>
+                        <th>Age</th>
+                        <th>Birthplace</th>
+                        <th>Height</th>
+                        <th>Weight (lbs)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {teamData[position.toLowerCase()].map(renderPlayer)}
+                    </tbody>
+                  </table>
+
+                </section>
+              ))}
+            </div>
+            <div className="fun-facts">
+              <h2>Fun Facts About my Isles Fandom</h2>
+              <ul>
+                {funFacts.map(renderFact)}
+              </ul>
+            </div>
+          </div>
+        )}
       </header>
     </div>
   );

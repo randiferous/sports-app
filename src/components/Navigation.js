@@ -11,6 +11,12 @@ const Navigation = () => {
         <li className='nav-item'>
           <Link to="/teamstats">Statistics</Link>
         </li>
+        <li className='nav-item'>
+            <Link to="/results">Results</Link>
+        </li>
+        <li className='nav-item'>
+          <Link to="/schedule">Schedule</Link>
+        </li>
       </ul>
     </nav>
   );
