@@ -15,7 +15,7 @@
       "function": {
         "sportsapp2410fef6": {
           "deploymentBucketName": "amplify-sportsapp-dev-125704-deployment",
-          "s3Key": "amplify-builds/sportsapp2410fef6-67563646357530434a68-build.zip"
+          "s3Key": "amplify-builds/sportsapp2410fef6-705835515a3947556155-build.zip"
         },
         "sportsapp515e7511": {
           "deploymentBucketName": "amplify-sportsapp-dev-125704-deployment",

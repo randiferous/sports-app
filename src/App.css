@@ -14,14 +14,16 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  padding: 20px; /* Added padding for spacing */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .App-link {
@@ -35,4 +37,44 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Light grey background */
+}
+
+h2, h3 {
+  color: #004d99; /* Navy blue, similar to Navigation bar */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd; /* Light grey border for table rows */
+}
+
+th {
+  background-color: #004d99; /* Navy blue header */
+  color: white;
+}
+
+ul {
+  list-style-type: none; /* Removing bullet points for consistency */
+  padding: 0;
+}
+
+li {
+  padding: 8px;
+}
+
+section {
+  margin-bottom: 20px;
 }

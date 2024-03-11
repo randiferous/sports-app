@@ -50,9 +50,23 @@ app.get('/stats', async function(req, res) {
   }
 });
 
-app.get('/stats/*', function(req, res) {
+app.get('/stats/team', async function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  const nhlApiUrl = 'https://api-web.nhle.com/v1/club-stats/NYI/now';
+  try {
+    // Use Axios to make the HTTP request
+    const response = await axios.get(nhlApiUrl);
+    console.log("RESPONSE", response);
+    // Set content type based on the Axios response
+    res.setHeader('Content-Type', 'application/json');
+    // Send the response data as JSON
+    res.json({ success: true, data: response.data });
+  } catch (error) {
+    console.error('Error fetching NHL data:', error);
+    // Determine the status code based on the error if possible
+    const statusCode = error.response ? error.response.status : 500;
+    res.status(statusCode).json({ success: false, message: 'Failed to fetch data' });
+  }
 });
 
 /****************************
